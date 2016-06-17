@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>AccioCode AngularJS Tutorial - Sorting and Filtering and Ng-Repeat</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+
+    <script src="static/js/apps.js"></script>
+    <script src="static/js/service.js"></script>
+    <script src="static/js/controller.js"></script>
+
+
+</head>
+<body>
+    name: {{name}}
+	<div class="mainContainer" data-ng-app="RavensApp" >
+		<h1>Baltimore Ravens</h1>
+
+		<input type="text" data-ng-model="search">
+		<div data-ng-controller="ravensCtrl">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Player</th>
+						<th>Position</th>
+						<th>Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="player in players | filter:search | orderBy:'number' | limitTo: 10">
+						<td ng-bind="player.name"></td>
+						<td ng-bind="player.position"></td>
+						<td ng-bind="player.number"></td>
+					</tr>
+				</tbody>
+			</table>
+            <a href="/temp">Click me</a><br>
+
+            <ul>
+                <li data-ng-repeat="num in numbers" ng-bind="num"></li>
+            </ul>
+            <input type="text" data-ng-model="addingNumber"><br>
+            <button ng-click="addNum(addingNumber)">Add</button><br>
+            <input type="text" data-ng-model="removeNumber"><br>
+            <button ng-click="removeNum(removeNumber)">Remove</button>
+            </div>
+
+</div>
+</body>
+</html>
